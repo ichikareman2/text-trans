@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"> 
+    <title>Text transformer</title>
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+</head>
+
+<body>
+    <div class="title-bar">
+        Text transformer
+        <span class="close">X</span>
+    </div>
+    <div class="main-container">
+        <div>
+            <label for="text-to-transform" >Text:</label>
+            <input id="transform-in" name="text-to-transform" type="text" placeholder="text to transform"/>
+        </div>
+        <div>
+            <button id="transform-btn">transform</button>
+        </div>
+        <div>
+            <label for="text-transformed" >Text:</label>
+            <input id="transform-out" name="text-transformed" type="text" disabled />
+        </div>
+    </div>
+
+</body>
+    <script>
+        // doesnt work
+        // require("normalize.css")
+        require("./index.js")
+    </script>
+</html>

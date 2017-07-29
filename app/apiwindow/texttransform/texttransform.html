@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        require("./texttransform.js")
+        const electron = require('electron');
+        const ipc = electron.ipcRenderer;
+        // let api = require("../../api/text-transformers/text-transform-api")
+
+        // ipc.on("call", (event, args, uid) => {
+        //     alert("AHH")
+        //     let method = args.method;
+        //     let params = args.params;
+
+        //     let result = api[method](...args.params);
+
+        //     event.sender.send(uid, result, uid);
+        // })
+        ipc.send("ping");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+html{
+    font-family: sans-serif; /* 1 */
+    font-size: 100%; /* 1 */
+}
+body {
+   min-height: 100%;
+
+}
+.title-bar {
+    padding: 3px;
+    height: 17px;
+    -webkit-app-region: drag;
+}
+.main-container {
+    margin:10px
+}
+.main-container>div {
+    margin-bottom: 10px;
+}

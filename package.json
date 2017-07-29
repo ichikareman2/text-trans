@@ -2,13 +2,16 @@
   "name": "text-trans",
   "version": "1.0.0",
   "description": "desktop app for transforming text to something else, like superscript or strikethrough",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "./node_modules/.bin/electron ."
   },
   "author": "kevin quing",
   "license": "ISC",
   "devDependencies": {
     "electron": "^1.6.11"
+  },
+  "dependencies": {
+    "normalize.css": "^7.0.0"
   }
 }
