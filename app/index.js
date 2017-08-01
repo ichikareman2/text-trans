@@ -2,7 +2,6 @@
 const electron = require('electron');
 const ipc = electron.ipcRenderer;
 
-console.log("this is loaded")
 
 let transformIn = document.getElementById("transform-in");
 let transformOut = document.getElementById("transform-out");
@@ -20,7 +19,7 @@ transformBtn.addEventListener("click", () => {
     ipc.send("apiCall", op);
 })
 ipc.on("apiReply", (event, args) => {
-    transformOut.value = args;
+    transformOut.innerHTML = args;
 })
 
 

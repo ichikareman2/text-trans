@@ -17,3 +17,7 @@ body {
 .main-container>div {
     margin-bottom: 10px;
 }
+
+#transform-out {
+    border: 1px solid black;
+}

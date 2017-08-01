@@ -16,18 +16,17 @@ let replySlots = [];
 
 function createMainWindow() {
     win = new BrowserWindow({
-        width: 490,
-        height: 225,
+        width: 300,
+        height: 240,
         resizable: false,
-        frame: false,
+        // frame: false,
 
     })
     win.loadURL(url.format({
         pathname: path.join(__dirname, "app", "index.html"),
         protocol: "file:",
         slashes: true
-    }))
-    console.log(path.join(__dirname, "app", "index.html"))
+    }));
 }
 function createTextTransformerWindow() {
     let win2 = new BrowserWindow({
@@ -41,7 +40,6 @@ function createTextTransformerWindow() {
     }))
     win2.webContents.openDevTools();
     apiWindows.push((["textTransformer", win2]));
-    console.log("text transormer loaded?")
 }
 
 app.on("ready", () => {
@@ -77,7 +75,6 @@ ipc.on("apiCall", (event, arg) => {
         params: params
     };
     apiToCall.webContents.send("call", req, uid);
-    console.log("sent")
 
     // set up a 1 time channel to receive the reply with result
     // 
@@ -90,7 +87,6 @@ ipc.on("apiCall", (event, arg) => {
         // replySlot.replyEvent.sender.send("apiReply", arg);
         // replySlot.replyEvent.sender.send("apiReply", arg)
         replySlots[indexToRemove].replyEvent.sender.send("apiReply", arg)
-        console.log("received reply");
     })
 })
 

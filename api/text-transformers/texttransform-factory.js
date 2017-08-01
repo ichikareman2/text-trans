@@ -1,21 +1,41 @@
-let superscript = require("./superscript-transform");
-let strikethrough = require("./strikethrough-transform");
-let subscript = require("./subscript-transform")
-function texttransformFactory () {
+let superscript = require("./transforms/superscript-transformer").superscriptTransformer;
+let strikethrough = require("./transforms/strikethrough-transformer").strikeThroughTransformer;
+let subscript = require("./transforms/subscript-transformer").subscriptTransformer
 
+class textTransformerFactory {
+    constructor(type) {
+        this.transformClass = type || superscript;
+    }
+    
+    createTextTransform(type) {
+        if (type === "superscript")
+            this.texttransformClass = superscript;
+        if (type === "strikethrough")
+            this.texttransformClass = strikethrough;
+        if (type === "subscript")
+            this.texttransformClass = subscript;
+
+        return new this.transformClass()
+    }
 }
-//set default
-texttransformFactory.prototype.texttransformClass = superscript;
-//factory
-texttransformFactory.prototype.createTextTransform = (type) => {
-    if (type === "superscript")
-        this.texttransformClass = superscript;
-    if (type === "strikethrough")
-        this.texttransformClass = strikethrough;
-    if (type === "subscript")
-        this.texttransformClass = subscript;
 
-    return new this.texttransformClass()
-}
+exports.textTransformerFactory = textTransformerFactory;
 
-module.exports = texttransformFactory;
+// function texttransformFactory() {
+
+// }
+// //set default
+// texttransformFactory.prototype.texttransformClass = superscript;
+// //factory
+// texttransformFactory.prototype.createTextTransform = (type) => {
+//     if (type === "superscript")
+//         this.texttransformClass = superscript;
+//     if (type === "strikethrough")
+//         this.texttransformClass = strikethrough;
+//     if (type === "subscript")
+//         this.texttransformClass = subscript;
+
+//     return new this.texttransformClass()
+// }
+
+// module.exports = texttransformFactory;
