@@ -27,6 +27,8 @@ function createMainWindow() {
         protocol: "file:",
         slashes: true
     }));
+    win.webContents.openDevTools();
+    win.on("closed", () => app.quit());
 }
 function createTextTransformerWindow() {
     let win2 = new BrowserWindow({
@@ -56,7 +58,8 @@ ipc.on("ping", (event, args) => {
     console.log("pinged")
 })
 
-ipc.on("apiCall", (event, arg) => {
+ipc.on("apiCall", (event, arg, channel) => {
+    
     // get api, method to call and params to send
     let apiNameToCall = arg.api;
     let methodToCall = arg.method;
@@ -75,18 +78,19 @@ ipc.on("apiCall", (event, arg) => {
         params: params
     };
     apiToCall.webContents.send("call", req, uid);
-
+    console.log("apiCall got called");
+    console.log(req);
     // set up a 1 time channel to receive the reply with result
     // 
-    ipc.once(uid, (event, arg, replyUid) => {
-        let indexToRemove = replySlots.findIndex(x => x.channel === replyUid)
-        // let replySlot = replySlots.splice(indexToRemove, 1);
-
+    ipc.once(uid, (event, arg) => {
+        let indexToRemove = replySlots.findIndex(x => x.channel === uid)
+        console.log("reply: " + arg)
         // //somehow doesnt work
         // // seems to not work because there is no global variable to hold it anymore?
         // replySlot.replyEvent.sender.send("apiReply", arg);
         // replySlot.replyEvent.sender.send("apiReply", arg)
-        replySlots[indexToRemove].replyEvent.sender.send("apiReply", arg)
+        replySlots[indexToRemove].replyEvent.sender.send(""+channel, arg)
+        replySlots.splice(indexToRemove, 1);
     })
 })
 

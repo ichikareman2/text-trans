@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <title>Text transformer</title>
     <link rel="stylesheet" href="css/normalize.css" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css">
@@ -15,22 +15,37 @@
     </div>
     <div class="main-container">
         <div>
-            <label for="text-to-transform" >Text:</label>
-            <input id="transform-in" name="text-to-transform" type="text" placeholder="text to transform"/>
+            <fieldset id="transform-options">
+                <legend>Transforms</legend>
+                <div>
+                    <input type="checkbox" id="superscript" value="superscript">
+                    <label for="superscript">superscript</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="strikethrough" value="strikethrough">
+                    <label for="strikethrough">strikethrough</label>
+                </div>
+            </fieldset>
+        </div>
+        <div>
+            <label for="text-to-transform">Text:</label>
+            <input id="transform-in" name="text-to-transform" type="text" placeholder="text to transform" />
         </div>
         <div>
             <button id="transform-btn">transform</button>
         </div>
         <div>
-            <label for="text-transformed" >Text:</label>
+            <label for="text-transformed">Text:</label>
             <div id="transform-out" name="text-transformed"></div>
         </div>
     </div>
 
 </body>
-    <script>
-        // doesnt work
-        // require("normalize.css")
-        require("./index.js")
-    </script>
+<script>
+    // // doesnt work
+    // require("normalize.css")
+    require("./index.js")
+
+</script>
+
 </html>
