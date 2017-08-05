@@ -13,7 +13,7 @@ class textTransformerFactory {
             },
             {
                 name: strikethrough.name,
-                transformer: strikethrough.strikeThroughTransformer
+                transformer: strikethrough.strikethroughTransformer
             },
             {
                 name: subscript.name,

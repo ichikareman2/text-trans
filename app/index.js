@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     transformBtn.addEventListener("click", () => {
         
-        let request = new callRequest("transform", { type: ["superscript"], text: transformIn.value })
+        let request = new callRequest("transform", { type: ["superscript", "strikethrough"], text: transformIn.value })
         caller.apiCall(request, (res) => transformOut.innerHTML = res)
     })
     
