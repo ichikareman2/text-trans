@@ -14,22 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let checkboxes = [];
 
     transformBtn.addEventListener("click", () => {
-        // let op = {
-        //     api: "textTransformer",
-        //     method: "transform",
-        //     params: {
-        //         type: "superscript",
-        //         text: transformIn.value
-        //     }
-        // };
-        let request = new callRequest("transform", { type: "superscript", text: transformIn.value })
-        // ipc.send("apiCall", op);
+        
+        let request = new callRequest("transform", { type: ["superscript"], text: transformIn.value })
         caller.apiCall(request, (res) => transformOut.innerHTML = res)
     })
-    // ipc.on("apiReply", (event, args) => {
-    //     transformOut.innerHTML = args;
-    // })
-
+    
     // // get transform options
     // let req = {
     //     api: "textTransformer",
@@ -58,14 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
     //         field.appendChild(container);
     //     })
     // })
-    /// TEMPORARY
-    console.log("dom ready. will send ping to textTransformer")
-    let caller = new apiCaller.apiCaller("textTransformer");
-    let request = new apiCaller.callRequest("ping", { message: "hello" });
-    caller.apiCall(request, (res) => {
-        console.log("index response:  " + res)
-    });
-    /// TEMPORARY
+    // /// TEMPORARY
+    // console.log("dom ready. will send ping to textTransformer")
+    // let caller = new apiCaller.apiCaller("textTransformer");
+    // let request = new apiCaller.callRequest("ping", { message: "hello" });
+    // caller.apiCall(request, (res) => {
+    //     console.log("index response:  " + res)
+    // });
+    // /// TEMPORARY
 })
 
 

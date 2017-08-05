@@ -7,3 +7,4 @@ class superscriptTransformer extends transformer {
 }
 
 exports.superscriptTransformer = superscriptTransformer;
+exports.name = "superscript"

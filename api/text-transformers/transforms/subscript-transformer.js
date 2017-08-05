@@ -7,3 +7,4 @@ class subscriptTransformer extends transformer {
 }
 
 exports.subscriptTransformer = subscriptTransformer;
+exports.name = "subscript"

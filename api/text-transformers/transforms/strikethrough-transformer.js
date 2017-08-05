@@ -6,7 +6,7 @@ class strikethroughTransformer extends transformer {
 }
 
 exports.strikeTransformer = strikethroughTransformer;
-
+exports.name = "strikethrough"
 
 // // module.exports.strikeThroughTransformer = 
 // let strikeThroughTransformer = function () {};

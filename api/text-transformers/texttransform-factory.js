@@ -1,41 +1,35 @@
-let superscript = require("./transforms/superscript-transformer").superscriptTransformer;
-let strikethrough = require("./transforms/strikethrough-transformer").strikeThroughTransformer;
-let subscript = require("./transforms/subscript-transformer").subscriptTransformer
+let superscript = require("./transforms/superscript-transformer");
+let strikethrough = require("./transforms/strikethrough-transformer");
+let subscript = require("./transforms/subscript-transformer")
 
 class textTransformerFactory {
-    constructor(type) {
-        this.transformClass = type || superscript;
+    constructor() {
+        // default
+        this.transformClass = superscript.superscriptTransformer;
+        this.transforms = [
+            {
+                name: superscript.name,
+                transformer: superscript.superscriptTransformer
+            },
+            {
+                name: strikethrough.name,
+                transformer: strikethrough.strikeThroughTransformer
+            },
+            {
+                name: subscript.name,
+                transformer: subscript.subscriptTransformer
+            }
+        ];
     }
-    
-    createTextTransform(type) {
-        if (type === "superscript")
-            this.texttransformClass = superscript;
-        if (type === "strikethrough")
-            this.texttransformClass = strikethrough;
-        if (type === "subscript")
-            this.texttransformClass = subscript;
+
+    createTextTransform(typeName) {
+        let type = this.transforms.find(x => x.name === typeName).transformer;
+        if (type) {
+            this.transformClass = type;
+        }
 
         return new this.transformClass()
     }
 }
 
 exports.textTransformerFactory = textTransformerFactory;
-
-// function texttransformFactory() {
-
-// }
-// //set default
-// texttransformFactory.prototype.texttransformClass = superscript;
-// //factory
-// texttransformFactory.prototype.createTextTransform = (type) => {
-//     if (type === "superscript")
-//         this.texttransformClass = superscript;
-//     if (type === "strikethrough")
-//         this.texttransformClass = strikethrough;
-//     if (type === "subscript")
-//         this.texttransformClass = subscript;
-
-//     return new this.texttransformClass()
-// }
-
-// module.exports = texttransformFactory;

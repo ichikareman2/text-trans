@@ -1,7 +1,14 @@
-const factory = require("./texttransform-factory").textTransformerFactory;
+const transformFactory = require("./texttransform-factory").textTransformerFactory;
+const pipeline = require("./text-transform-pipeline")
 
-function transform (type, text) {
-    return new factory().createTextTransform(type).transform(text);
+function transform (types, text) {
+    let factory = new transformFactory();
+    let pipe = new pipeline();
+
+    let transforms = types.map(x => factory.createTextTransform(x));
+    transforms.forEach(x => pipe.register(x))
+    let retVal = pipe.execute(text);
+    return retVal;
 }
 
 exports.transform = transform;  
