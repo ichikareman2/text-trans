@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let transformOut = document.getElementById("transform-out");
     let transformBtn = document.getElementById("transform-btn");
     // contains checkbox elements
-    let checkboxes = [];
+    let checkboxes = document.getElementsByName("transform-option");
 
     transformBtn.addEventListener("click", () => {
-        
-        let request = new callRequest("transform", { type: ["superscript", "strikethrough"], text: transformIn.value })
+        let transformTypes = Array.prototype.filter.call(checkboxes, el => el.checked).map(x => x.value)
+        let request = new callRequest("transform", { type: transformTypes, text: transformIn.value })
         caller.apiCall(request, (res) => transformOut.innerHTML = res)
     })
     

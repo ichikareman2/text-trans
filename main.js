@@ -17,7 +17,7 @@ let replySlots = [];
 function createMainWindow() {
     win = new BrowserWindow({
         width: 300,
-        height: 240,
+        height: 300,
         resizable: false,
         // frame: false,
 

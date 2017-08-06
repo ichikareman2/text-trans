@@ -9,21 +9,25 @@
 </head>
 
 <body>
-    <div class="title-bar">
+    <!-- <div class="title-bar">
         Text transformer
         <span class="close">X</span>
-    </div>
+    </div> -->
     <div class="main-container">
         <div>
             <fieldset id="transform-options">
                 <legend>Transforms</legend>
                 <div>
-                    <input type="checkbox" id="superscript" value="superscript">
+                    <input type="checkbox" id="superscript" value="superscript" name="transform-option">
                     <label for="superscript">superscript</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="strikethrough" value="strikethrough">
+                    <input type="checkbox" id="strikethrough" value="strikethrough" name="transform-option">
                     <label for="strikethrough">strikethrough</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="subscript" value="subscript" name="transform-option">
+                    <label for="subscript">subscript</label>
                 </div>
             </fieldset>
         </div>
