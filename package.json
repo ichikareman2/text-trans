@@ -9,7 +9,7 @@
   "author": "kevin quing",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^7.0.0"
+    "electron": "^7.2.4"
   },
   "dependencies": {
     "normalize.css": "^7.0.0"
